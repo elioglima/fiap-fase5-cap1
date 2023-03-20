@@ -37,92 +37,85 @@ namespace Greenlight.Services
             {
                 var dados = await eventoRepository.ToListAsync();
                 if (dados is null)
-                    return new EventoServiceResposta(true, "EventoServiceResposta :: Registro nao localizado");
+                    return new EventoServiceResposta(true, "EventoServices :: Registro nao localizado");
 
-                return new EventoServiceResposta(dados, "EventoServiceResposta :: Processo de consulta concluido.");
+                return new EventoServiceResposta(dados, "EventoServices :: Processo de consulta concluido.");
             }
             catch (Exception)
             {
 
-                return new EventoServiceResposta(true, "EventoServiceResposta :: Nao foi possivel consultar os dados.");
+                return new EventoServiceResposta(true, "EventoServices :: Nao foi possivel consultar os dados.");
             }
         }
 
-        public async Task<EventoServiceResposta> Adicionar(EnderecoServiceRequisicao dados)
+        public async Task<EventoServiceResposta> Adicionar(EventoServiceRequisicao dados)
         {
             using (await db.Database.BeginTransactionAsync())
             {
                 try
                 {
                     dados.Id = 0;
-                    endererecoRepository.Add(dados);
+                    eventoRepository.Add(dados);
                     await db.SaveChangesAsync();
                     await db.Database.CommitTransactionAsync();
-                    return new EnderecoServiceResposta(dados, "EnderecoServices :: Dados gravados com sucesso.");
+                    return new EventoServiceResposta(dados, "EventoServices :: Dados gravados com sucesso.");
                 }
                 catch (Exception ex)
                 {
                     await db.Database.RollbackTransactionAsync();
-                    return new EnderecoServiceResposta(true, ex.Message);
+                    return new EventoServiceResposta(true, ex.Message);
                 }
             }
         }
 
-        public async Task<EnderecoServiceResposta> Atualizar(int id, EnderecoServiceRequisicao dados)
+        public async Task<EventoServiceResposta> Atualizar(int id, EventoServiceRequisicao dados)
         {
             using (await db.Database.BeginTransactionAsync())
             {
                 try
                 {
 
-                    var registroLocalizado = await endererecoRepository.FindAsync(id);
+                    var registroLocalizado = await eventoRepository.FindAsync(id);
                     if (registroLocalizado is null)
-                        return new EnderecoServiceResposta(dados, "EnderecoServices :: Associacao nao localizada.");
+                        return new EventoServiceResposta(dados, "EventoServices :: Associacao nao localizada.");
 
-                    registroLocalizado.Logradouro = dados.Logradouro;
-                    registroLocalizado.CEP = dados.CEP;
-                    registroLocalizado.Numero = dados.Numero;
-                    registroLocalizado.Complemento = dados.Complemento;
-                    registroLocalizado.Bairro = dados.Bairro;
-                    registroLocalizado.Cidade = dados.Cidade;
-                    registroLocalizado.Pais = dados.Pais;
-                    registroLocalizado.Estado = dados.Estado;
-                    registroLocalizado.UF = dados.UF;
-                    registroLocalizado.CodigoInstalacao = dados.CodigoInstalacao;
+                    registroLocalizado.Descricao = dados.Descricao;
+                    registroLocalizado.Texto = dados.Texto;
+                    registroLocalizado.Data = dados.Data;
 
-                    endererecoRepository.Update(registroLocalizado);
+                    eventoRepository.Update(registroLocalizado);
                     await db.SaveChangesAsync();
                     await db.Database.CommitTransactionAsync();
-                    return new EnderecoServiceResposta(registroLocalizado, "EnderecoServices :: Dados Alterados com sucesso.");
+                    return new EventoServiceResposta(registroLocalizado, "EventoServices :: Dados Alterados com sucesso.");
                 }
                 catch (Exception)
                 {
                     await db.Database.RollbackTransactionAsync();
-                    return new EnderecoServiceResposta(true, "EnderecoServices :: Falha ao alterar os dados.");
+                    return new EventoServiceResposta(true, "EventoServices :: Falha ao alterar os dados.");
                 }
             }
         }
 
-        public async Task<EnderecoServiceResposta> Remover(int id)
+        public async Task<EventoServiceResposta> Remover(int id)
         {
             using (await db.Database.BeginTransactionAsync())
             {
                 try
                 {
 
-                    var registroLocalizado = await endererecoRepository.FindAsync(id);
+                    var registroLocalizado = await eventoRepository.FindAsync(id);
                     if (registroLocalizado is null)
-                        return new EnderecoServiceResposta(true, "EnderecoServices :: Pessoa nao localizada.");
+                        return new EventoServiceResposta(true, "EventoServices :: Pessoa nao localizada.");
 
-                    endererecoRepository.Remove(registroLocalizado);
+                    eventoRepository.Remove(registroLocalizado);
                     await db.SaveChangesAsync();
                     await db.Database.CommitTransactionAsync();
-                    return new EnderecoServiceResposta(registroLocalizado, "EnderecoServices :: Dados apagado com sucesso.");
+                    return new EventoServiceResposta(registroLocalizado, "EventoServices :: Dados apagado com sucesso.");
                 }
                 catch (Exception)
                 {
                     await db.Database.RollbackTransactionAsync();
-                    return new EnderecoServiceResposta(true, "EnderecoServices :: Falha ao alterar os dados.");
+                    return new EventoServiceResposta(true, "EventoServices :: Falha ao alterar os dados.");
                 }
             }
         }
