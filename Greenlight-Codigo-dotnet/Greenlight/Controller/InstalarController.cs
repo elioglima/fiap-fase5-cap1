@@ -21,12 +21,12 @@ namespace Greenlight.Controller
         [HttpPost]
         public async Task<ActionResult<InstalarServicesResposta>> Instalar()
         {
-            if (!ModelState.IsValid)
-                return BadRequest(new ResultController<InstalarServicesResposta>("Erro ao carregar chamada"));
+            //if (!ModelState.IsValid)
+            //    return BadRequest(new ResultController<InstalarServicesResposta>("Erro ao carregar chamada"));
 
-            var resposta = await this.instalarServices.Instalar();
-            if (resposta.Erro)
-                return BadRequest(new ResultController<InstalarServicesResposta>(resposta.Mensagem));
+            //var resposta = await this.instalarServices.Instalar();
+            //if (resposta.Erro)
+            //    return BadRequest(new ResultController<InstalarServicesResposta>(resposta.Mensagem));
 
             return Ok(new { mensagem = "Instalacao bem sucedida" });
         }

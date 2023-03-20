@@ -32,8 +32,6 @@ namespace Greenlight.Entitys
         [JsonIgnore]
         public Pessoa? Pessoa { get; set; }
 
-        [JsonIgnore]
-        public ICollection<Energia> Energia { get; set; }
 
     }
 }

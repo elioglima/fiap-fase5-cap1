@@ -7,7 +7,8 @@ namespace Greenlight.Data.Configurations.Configure
     {
         public static void Configure(ModelBuilder builder)
         {
-            builder.ApplyConfiguration(new AssociacaoMap());
+            builder.ApplyConfiguration(new EventoParticipanteMap());
+            builder.ApplyConfiguration(new EventoMap());
             builder.ApplyConfiguration(new ClienteMap());            
             builder.ApplyConfiguration(new PessoaFisicaMap());            
             builder.ApplyConfiguration(new EnderecoMap());
