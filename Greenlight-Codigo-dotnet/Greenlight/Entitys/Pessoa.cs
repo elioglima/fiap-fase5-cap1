@@ -26,6 +26,9 @@ namespace Greenlight.Entitys
         [JsonIgnore]
         public ICollection<Evento>? Evento{ get; set; }
 
+        [JsonIgnore]
+        public ICollection<EventoParticipante>? EventoParticipante { get; set; }
+
 
     }
 }

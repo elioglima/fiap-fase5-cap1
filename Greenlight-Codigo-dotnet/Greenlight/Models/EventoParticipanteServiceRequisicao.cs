@@ -3,7 +3,7 @@ using Greenlight.Entitys;
 
 namespace Greenlight.Models
 {
-    public class EventoParticipanteServiceRequisicao: Evento
+    public class EventoParticipanteServiceRequisicao: EventoParticipante
     {
 
 

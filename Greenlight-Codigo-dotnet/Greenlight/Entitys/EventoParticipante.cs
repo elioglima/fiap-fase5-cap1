@@ -11,6 +11,11 @@ namespace Greenlight.Entitys
 
         [JsonIgnore]
         public Evento? Evento { get; set; }
+        
+        public int PessoaId { get; set; }
+
+        [JsonIgnore]
+        public Pessoa? Pessoa { get; set; }
 
     }
 }

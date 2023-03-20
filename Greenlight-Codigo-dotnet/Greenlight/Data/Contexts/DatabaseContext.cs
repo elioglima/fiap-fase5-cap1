@@ -14,7 +14,9 @@ namespace Greenlight.Data.Contexts
         }
 
         public DbSet<Endereco> Endereco { get; set; }
+        public DbSet<EventoParticipante> EventoParticipante  { get; set; }
         public DbSet<Evento> Evento { get; set; }
+        
 
         public DbSet<PessoaFisica> PessoaFisica { get; set; }
 

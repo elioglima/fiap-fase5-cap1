@@ -20,6 +20,10 @@ namespace Greenlight.Data.MapEntity
             builder.HasOne<Evento>(a => a.Evento)
                 .WithMany(p => p.EventoParticipante)
                 .HasForeignKey(x => x.EventoId);
+
+            builder.HasOne<Pessoa>(a => a.Pessoa)
+                .WithMany(p => p.EventoParticipante)
+                .HasForeignKey(x => x.PessoaId);
         }
     }
 }
