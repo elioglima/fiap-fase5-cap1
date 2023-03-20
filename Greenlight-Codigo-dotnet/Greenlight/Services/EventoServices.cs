@@ -5,50 +5,50 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Greenlight.Services
 {
-    public class EnderecoServices : ServiceBase, IServiceController<Endereco, EnderecoServiceResposta, EnderecoServiceRequisicao>
+    public class EventoServices : ServiceBase, IServiceController<Evento, EventoServiceResposta, EventoServiceRequisicao>
     {
-        private DbSet<Endereco> endererecoRepository;
+        private DbSet<Evento> eventoRepository;
 
-        public EnderecoServices(DatabaseContext databaseContext) : base(databaseContext)
+        public EventoServices(DatabaseContext databaseContext) : base(databaseContext)
         {
-            endererecoRepository = db.Endereco;
+            eventoRepository = db.Evento;
         }
 
-        public async Task<EnderecoServiceResposta> BuscarPorId(int Id)
+        public async Task<EventoServiceResposta> BuscarPorId(int Id)
         {
             try
             {
-                var dados = await endererecoRepository.FindAsync(Id);
+                var dados = await eventoRepository.FindAsync(Id);
                 if (dados is null)
-                    return new EnderecoServiceResposta(true, "EnderecoServices :: Registro nao localizado");
+                    return new EventoServiceResposta(true, "EventoServiceResposta :: Registro nao localizado");
 
-                return new EnderecoServiceResposta(dados, "EnderecoServices :: Processo de consulta concluido.");
+                return new EventoServiceResposta(dados, "EventoServices :: Processo de consulta concluido.");
             }
             catch (Exception)
             {
 
-                return new EnderecoServiceResposta(true, "EnderecoServices :: Nao foi possivel consultar os dados.");
+                return new EventoServiceResposta(true, "EventoServices :: Nao foi possivel consultar os dados.");
             }
         }
 
-        public async Task<EnderecoServiceResposta> BuscarTodos()
+        public async Task<EventoServiceResposta> BuscarTodos()
         {
             try
             {
-                var dados = await endererecoRepository.ToListAsync();
+                var dados = await eventoRepository.ToListAsync();
                 if (dados is null)
-                    return new EnderecoServiceResposta(true, "EnderecoServices :: Registro nao localizado");
+                    return new EventoServiceResposta(true, "EventoServiceResposta :: Registro nao localizado");
 
-                return new EnderecoServiceResposta(dados, "EnderecoServices :: Processo de consulta concluido.");
+                return new EventoServiceResposta(dados, "EventoServiceResposta :: Processo de consulta concluido.");
             }
             catch (Exception)
             {
 
-                return new EnderecoServiceResposta(true, "EnderecoServices :: Nao foi possivel consultar os dados.");
+                return new EventoServiceResposta(true, "EventoServiceResposta :: Nao foi possivel consultar os dados.");
             }
         }
 
-        public async Task<EnderecoServiceResposta> Adicionar(EnderecoServiceRequisicao dados)
+        public async Task<EventoServiceResposta> Adicionar(EnderecoServiceRequisicao dados)
         {
             using (await db.Database.BeginTransactionAsync())
             {
