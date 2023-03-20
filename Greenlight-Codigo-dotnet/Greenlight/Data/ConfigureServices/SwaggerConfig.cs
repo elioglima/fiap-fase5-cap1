@@ -14,7 +14,7 @@ namespace Greenlight.Data.Configurations.ConfigureServices
                 {
                     Title = "Firebug - Greenlight",
                     Version = "v1",
-                    Description = "Gerenciamento e controle de contratos de energia",
+                    Description = "Gerenciamento e controle de Eventos",
                     TermsOfService = new Uri("https://example.com/terms"),
                     Contact = new OpenApiContact
                     {
