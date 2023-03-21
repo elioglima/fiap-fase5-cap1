@@ -16,3 +16,7 @@ O projeto a ser enviado em formato ZIP ou via repositório no GitHub, que seja p
 Lembre-se: esta é uma atividade colaborativa, por isso não deve ser feita individualmente, e, sim, ser cocriada entre os integrantes da equipe.
 
 É necessário que somente um aluno do grupo realize a entrega, pois a nota será automaticamente replicada para os demais integrantes.
+
+![image](https://user-images.githubusercontent.com/6618004/226492132-49f033a8-0d24-4136-a56a-06e05a53825a.png)
+
+![image](https://user-images.githubusercontent.com/6618004/226492138-9e648451-3e26-40db-bcfc-25f2daff1f27.png)
