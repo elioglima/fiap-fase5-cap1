@@ -1,5 +1,4 @@
-# fiap-fase7-cap1
-Cap 1 - O mundo das pequenas telas - Desenvolvendo um APP
+Fase 5 - Cap 1 - O mundo das pequenas telas - Desenvolvendo um APP
 
 INTRODUÇÃO
 Atividade – Desenvolvendo um app
